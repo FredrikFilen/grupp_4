@@ -66,10 +66,10 @@ public class TicTacToeMedSmartareCpu {
 				}
 			}
 			
-			// hÃ¤r placeras spelarens val pÃ¥ brÃ¤det.
+			// här placeras spelarens val på brädet.
 			placePiece(gameBoard, playerPosition, "player");
 			
-			//efter att spelaren spelat kontrollerar programmet om nÃ¥gon vunnit.
+			//efter att spelaren spelat kontrollerar programmet om någon vunnit.
 			String result = checkWinner();
 			if(result.length() > 0) {
 				printBoard(gameBoard);
@@ -77,23 +77,23 @@ public class TicTacToeMedSmartareCpu {
 				break;
 			}
 			
-			//linje fÃ¶r snyggare output. separerar olika "turer".
+			//linje för snyggare output. separerar olika "turer".
 			System.out.println("--------------------------------");
 			
 			//datorns tur
-			//Datorn gÃ¥r igenom alla positioner pÃ¥ spelbrÃ¤det. Om positionen Ã¤r upptagen sÃ¥ prÃ¶var den nÃ¤sta. Om en placering i positionen resulterar i vinst sÃ¥ kommer
+			//Datorn går igenom alla positioner på spelbrädet. Om positionen Ãr upptagen så prövar den nästa. Om en placering i positionen resulterar i vinst så kommer
 			//datorn att spela den.
 			Random rand = new Random();
 			for(int i = 1; i <= 9; i++) {
 				if(playerPositions.contains(i) || cpuPositions.contains(i)) {	//om platsen Ã¤r upptagen sÃ¥ gÃ¥r den vidare till nÃ¤sta position.
 					continue;
 				}
-				placePiece(gameBoard, i, "cpu");	//om positionen Ã¤r ledig sÃ¥ prÃ¶var datorn att spela den
+				placePiece(gameBoard, i, "cpu");	//om positionen är ledig så prövar datorn att spela den
 				result = checkWinner();
-				if(result.length() > 0) {	//om positionen resulterar i vinst sÃ¥ spelas den
+				if(result.length() > 0) {	//om positionen resulterar i vinst så spelas den
 					break;
 				}else {
-					removePiece(gameBoard, i, "cpu");	//om det inte Ã¤r en vinst sÃ¥ positionen bort.
+					removePiece(gameBoard, i, "cpu");	//om det inte är en vinst så positionen bort.
 				}
 			}
 			result = checkWinner();
@@ -101,14 +101,12 @@ public class TicTacToeMedSmartareCpu {
 				printBoard(gameBoard);
 				System.out.println(result);
 				break;
-			}
-			
-			//om ingen av de mÃ¶jliga positionera resulterar i vinst sÃ¥ slumpar datorn sitt val.
+			}			
+			//om ingen av de möjliga positionera resulterar i vinst så slumpar datorn sitt val.
 			int cpuPosition = rand.nextInt(9) + 1;
-			while(playerPositions.contains(cpuPosition) || cpuPositions.contains(cpuPosition)) { //om den framslumpade positionen Ã¤r upptagen sÃ¥ slumpas en ny fram.
+			while(playerPositions.contains(cpuPosition) || cpuPositions.contains(cpuPosition)) { //om den framslumpade positionen är upptagen så slumpas en ny fram.
 				cpuPosition = rand.nextInt(9) + 1;
-			}
-			
+			}			
 			//placerar den slumpade positionen
 			placePiece(gameBoard, cpuPosition, "cpu");
 			printBoard(gameBoard);	
@@ -119,8 +117,7 @@ public class TicTacToeMedSmartareCpu {
 				System.out.println(result);
 				break;
 			}
-			
-		
+					
 		}
 		
 	}
