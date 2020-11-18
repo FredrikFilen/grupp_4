@@ -159,8 +159,17 @@ public class TicTacToeMedSmartareCpu {
 			if (playerPositions.containsAll(l)) {
 				return "Grattis du vann!";
 
+
 			} else if (cpuPositions.containsAll(l)) {
 				return "Tyvärr, datorn vann :)";
+
+
+				
+			} else if(cpuPositions.containsAll(l)) {
+				return "Tyvärr, datorn vann";
+				
+			}
+			
 
 			}
 
