@@ -2,6 +2,7 @@ package ticTacToe;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,9 +13,9 @@ public class TicTacToeMedSmartareCpu {
 	static ArrayList<Integer> cpuPositions = new ArrayList<Integer>();			//arrayList fÃ¶r att spara cpuns drag
 
 	public static void main(String[] args) {
-		int playerPosition = 0;	//deklaration av variabel fÃ¶r att hÃ¥lla koll pÃ¥ spelarens val.
+		int playerPosition = 0;	//deklaration av variabel för att hålla koll på spelarens val.
 	
-		//spelbrÃ¤det, 2d array fÃ¶r rader och kolumner.
+		//spelbrädet, 2d array för rader och kolumner.
 		char [] [] gameBoard = 
 		{{' ', '|', ' ', '|', ' '},
 		 {'-', '+', '-', '+', '-' },
@@ -22,46 +23,46 @@ public class TicTacToeMedSmartareCpu {
 		 {'-', '+', '-', '+', '-' },
 		 {' ', '|', ' ', '|', ' '}};
 		
-		System.out.println("VÃ¤lkommen till TicTacToe!"
+		System.out.println("Välkommen till TicTacToe!"
 			+ "\nX = du \nO = CPU");
 		printBoard(gameBoard); 	//printar ut spelbrÃ¤det. 
 		
-		//loop som kÃ¶r sjÃ¤lva spelet, lÃ¥ter spelaren och cpun spela tills brÃ¤det Ã¤r fullt eller nÃ¥gon har vunnit.
+		//loop som kör själva spelet, låter spelaren och cpun spela tills brädet är fullt eller någon har vunnit.
 		//spelarens tur
 		while(true) {
 			System.out.println("Ange din placering (1 - 9): ");
-			//exceptionhantering fÃ¶r input. fÃ¥ngar om input inte Ã¤r ett nummer.
+			//exceptionhantering för input. fångar om input inte är ett nummer.
 			while(true) {		
 				try {
 					Scanner scanner = new Scanner(System.in);
 					playerPosition = scanner.nextInt();
 					while(playerPosition <= 0 || playerPosition > 9) {
-						System.out.println("Du kan bara vÃ¤lja position med siffrorna 1 - 9, prÃ¶va igen.");
+						System.out.println("Du kan bara välja position med siffrorna 1 - 9, pröva igen.");
 							try {
 								playerPosition = scanner.nextInt();
 								
 								
-							}catch (Exception e) {
+							}catch (InputMismatchException e) {
 								scanner.nextLine();
 							}
 						}
 				break;
-				}catch (Exception e) {
-						System.out.println("Du kan bara vÃ¤lja position med siffrorna 1 - 9, prÃ¶va igen.");
+				}catch (InputMismatchException e) {
+						System.out.println("Du kan bara välja position med siffrorna 1 - 9, pröva igen.");
 				}
 			}
 			
 			
-			//Loop som kontrollerar om positionen Ã¤r upptagen, om den Ã¤r det fÃ¥r man prÃ¶va igen. med exceptionhantering fÃ¶r input.
+			//Loop som kontrollerar om positionen är upptagen, om den är det fÃ¥r man pröva igen. med exceptionhantering för input.
 			while(playerPositions.contains(playerPosition) || cpuPositions.contains(playerPosition)) {
-				System.out.println("position upptagen, prÃ¶va igen");
+				System.out.println("position upptagen, pröva igen");
 				while(true) {
 					try {
 						Scanner scanner = new Scanner(System.in);
 						playerPosition = scanner.nextInt();
 						break;
-					}catch (Exception e) {
-						System.out.println("Du kan bara vÃ¤lja position med siffrorna 1 - 9, prÃ¶va igen.");
+					}catch (InputMismatchException e) {
+						System.out.println("Du kan bara välja position med siffrorna 1 - 9, pröva igen.");
 					}
 				}
 			}
