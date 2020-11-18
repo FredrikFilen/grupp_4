@@ -13,7 +13,7 @@ public class TicTacToeMedSmartareCpu {
 
 	public static void main(String[] args) {
 		int playerPosition = 0;	//deklaration av variabel för att hålla koll på spelarens val.
-	
+	   
 		//spelbrädet, 2d array för rader och kolumner.
 		char [] [] gameBoard = 
 		{{' ', '|', ' ', '|', ' '},
