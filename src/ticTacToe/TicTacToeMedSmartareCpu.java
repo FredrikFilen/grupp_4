@@ -13,6 +13,25 @@ public class TicTacToeMedSmartareCpu {
 	static ArrayList<Integer> cpuPositions = new ArrayList<Integer>(); // arrayList för att spara cpuns drag
 
 	public static void main(String[] args) {
+
+		int playerPosition = 0;	//deklaration av variabel för att hålla koll på spelarens val.
+	   
+		//spelbrädet, 2d array för rader och kolumner.
+		char [] [] gameBoard = 
+		{{' ', '|', ' ', '|', ' '},
+		 {'-', '+', '-', '+', '-' },
+		 {' ', '|', ' ', '|', ' '},
+		 {'-', '+', '-', '+', '-' },
+		 {' ', '|', ' ', '|', ' '}};
+		
+		System.out.println("Välkommen till TicTacToe!"
+			+ "\nX = du \nO = CPU");
+		printBoard(gameBoard); 	//printar ut spelbrädet. 
+		
+		//loop som kör själva spelet, låter spelaren och cpun spela tills brädet är fullt eller någon har vunnit.
+		//spelarens tur
+		while(true) {
+
 		int playerPosition = 0; // deklaration av variabel f�r att h�lla koll p� spelarens val.
 
 		// spelbr�det, 2d array f�r rader och kolumner.
@@ -26,6 +45,7 @@ public class TicTacToeMedSmartareCpu {
 		// fullt eller n�gon har vunnit.
 		// spelarens tur
 		while (true) {
+
 			System.out.println("Ange din placering (1 - 9): ");
 			// exceptionhantering f�r input. f�ngar om input inte �r ett nummer.
 			while (true) {
@@ -62,16 +82,32 @@ public class TicTacToeMedSmartareCpu {
 				}
 			}
 
+			
+			// h�r placeras spelarens val p� br�det.
+			placePiece(gameBoard, playerPosition, "player");
+			
+			//efter att spelaren spelat kontrollerar programmet om n�gon vunnit.
+
+
 			// här placeras spelarens val på brädet.
 			placePiece(gameBoard, playerPosition, "player");
 
-			// efter att spelaren spelat kontrollerar programmet om någon vunnit.
+
 			String result = checkWinner();
 			if (result.length() > 0) {
 				printBoard(gameBoard);
 				System.out.println(result);
 				break;
 			}
+
+			
+			//linje f�r snyggare output. separerar olika "turer".
+			System.out.println("--------------------------------");
+			
+			//datorns tur
+			//Datorn g�r igenom alla positioner p� spelbr�det. Om positionen �r upptagen s� pr�var den n�sta. Om en placering i positionen resulterar i vinst s� kommer
+			//datorn att spela den.
+
 
 			// linje för snyggare output. separerar olika "turer".
 			System.out.println("--------------------------------");
@@ -80,18 +116,27 @@ public class TicTacToeMedSmartareCpu {
 			// Datorn går igenom alla positioner på spelbrädet. Om positionen är upptagen så
 			// prövar den nästa. Om en placering i positionen resulterar i vinst så kommer
 			// datorn att spela den.
+
 			Random rand = new Random();
 			for (int i = 1; i <= 9; i++) {
 				if (playerPositions.contains(i) || cpuPositions.contains(i)) { // om platsen är upptagen så går den
 																				// vidare till nästa position.
 					continue;
 				}
+
+				placePiece(gameBoard, i, "cpu");	//om positionen �r ledig s� pr�var datorn att spela den
+				result = checkWinner();
+				if(result.length() > 0) {	//om positionen resulterar i vinst s� spelas den
+					break;
+				}else {
+					removePiece(gameBoard, i, "cpu");	//om det inte �r en vinst s� positionen bort.
+
 				placePiece(gameBoard, i, "cpu"); // om positionen är ledig så prövar datorn att spela den
 				result = checkWinner();
 				if (result.length() > 0) { // om positionen resulterar i vinst så spelas den
 					break;
 				} else {
-					removePiece(gameBoard, i, "cpu"); // om det inte är en vinst så positionen bort.
+
 				}
 			}
 			result = checkWinner();
@@ -99,6 +144,15 @@ public class TicTacToeMedSmartareCpu {
 				printBoard(gameBoard);
 				System.out.println(result);
 				break;
+
+			}			
+			//om ingen av de m�jliga positionera resulterar i vinst s� slumpar datorn sitt val.
+			int cpuPosition = rand.nextInt(9) + 1;
+			while(playerPositions.contains(cpuPosition) || cpuPositions.contains(cpuPosition)) { //om den framslumpade positionen �r upptagen s� slumpas en ny fram.
+				cpuPosition = rand.nextInt(9) + 1;
+			}			
+			//placerar den slumpade positionen
+
 			}
 
 			// om ingen av de möjliga positionera resulterar i vinst så slumpar datorn sitt
@@ -113,6 +167,7 @@ public class TicTacToeMedSmartareCpu {
 			}
 
 			// placerar den slumpade positionen
+
 			placePiece(gameBoard, cpuPosition, "cpu");
 			printBoard(gameBoard);
 
@@ -122,6 +177,10 @@ public class TicTacToeMedSmartareCpu {
 				System.out.println(result);
 				break;
 			}
+
+					
+
+
 
 		}
 
