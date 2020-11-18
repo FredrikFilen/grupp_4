@@ -173,7 +173,7 @@ public class TicTacToeMedSmartareCpu {
 
 			}
 
-		}
+		
 		if (playerPositions.size() + cpuPositions.size() == 9) {
 			return "Tie, försök igen.";
 		}
@@ -279,4 +279,5 @@ public class TicTacToeMedSmartareCpu {
 			break;
 		}
 	}
+	
 }
