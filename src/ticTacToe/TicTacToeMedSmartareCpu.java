@@ -156,7 +156,7 @@ public class TicTacToeMedSmartareCpu {
 				return "Grattis du vann!";
 				
 			} else if(cpuPositions.containsAll(l)) {
-				return "Tyvärr, datorn vann :(";
+				return "Tyvärr, datorn vann");
 				
 			}
 			
