@@ -5,17 +5,14 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-
-
 class Player {
 
 	   String firstName ;
-	   String lastName ;
-	   
+	   	   
 
-	   public Player(String firstName,String lastName) {
+	   public Player(String firstName) {
 	       this.firstName = firstName;
-	       this.lastName = lastName;
+	       
 	       
 	   }
 
@@ -37,7 +34,7 @@ class Number {
 	       players.add(player);
 	   }
 
-	   public String getNumberName(){
+	   public String getNumber(){
 	       return Number;
 	   }
 
@@ -56,8 +53,8 @@ public class Skier {
 	      numbers.put(Number ,number);
 	   }
 
-	   public void addPlayer(String Number,String firstName,String lastName) {
-	       Player player = new Player(firstName,lastName);
+	   public void addPlayer(String Number,String firstName) {
+	       Player player = new Player(firstName);
 	       Number number = numbers.get(Number) ;
 	       number.addPlayer(player);
 	   }
@@ -65,30 +62,25 @@ public class Skier {
 	   public void print(){
 	       for(Map.Entry<String , Number> entry : numbers.entrySet() ) {
 	           Number number = entry.getValue();
-	           System.out.println(number.getNumberName()  + number.getPlayers().toString());
-	           
+	           System.out.println(number.getNumber()  + number.getPlayers().toString());	           
 	       }
-	   }
-	   
-	   
+	   }	      
 
 	   public static void main (String args[]) throws Exception{
 
-	       Skier game = new Skier();
+	       Skier game = new Skier();       
 	       
-	       
-
 	       game.addNumber("1");
 	       game.addNumber("2");
 	       game.addNumber("3");
 	       game.addNumber("4");
 	       game.addNumber("5");
 	       
-	       game.addPlayer("1","Robert","");
-	       game.addPlayer("2","Frank","");
-	       game.addPlayer("3","Åsa","");
-	       game.addPlayer("4","Bert","");
-	       game.addPlayer("5","Emma","");
+	       game.addPlayer("1","Robert");
+	       game.addPlayer("2","Frank");
+	       game.addPlayer("3","Åsa");
+	       game.addPlayer("4","Bert");
+	       game.addPlayer("5","Emma");
 	       
 	       game.print();
 
