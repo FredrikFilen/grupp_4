@@ -2,8 +2,9 @@ package grupp4;
 
 public class Skier {
 	private String name = "";
-	static int jerseyNumber = 0;
+	static int jerseyNumber;
 	private int position = 0;
+	ArrayList<Skier> jerseyNumber = new ArrayList();
 
 	public Skier(String name, int position) {
 		this.name = name;
@@ -12,6 +13,12 @@ public class Skier {
 
 	public void move() {
 		System.out.println("The competitor is racing.");
+	}
+
+	public void speed(double speed) {
+		register here speed of competitors 
+		speed = position / time;
+		System.out.println("The speed is " + speed);
 	}
 
 	public void stop() {
