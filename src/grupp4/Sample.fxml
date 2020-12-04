@@ -21,7 +21,7 @@
           <RowConstraints maxHeight="524.0" minHeight="10.0" prefHeight="517.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="testLabel" alignment="CENTER" prefHeight="108.0" prefWidth="947.0" text="Välkommen till skidprogrammet!">
+            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="108.0" prefWidth="947.0" text="Välkommen till skidprogrammet!">
                <font>
                   <Font name="Calibri" size="52.0" />
                </font>
@@ -59,7 +59,7 @@
                      <children>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <Button fx:id="startButton" layoutX="78.0" layoutY="40.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="239.0" text="START" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Button fx:id="startButton" layoutX="78.0" layoutY="40.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="104.0" prefWidth="239.0" text="START" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -68,7 +68,7 @@
                         </AnchorPane>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
-                              <Button layoutX="77.0" layoutY="52.0" mnemonicParsing="false" prefHeight="104.0" prefWidth="238.0" text="Reset" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Button fx:id="resetButton" layoutX="77.0" layoutY="52.0" mnemonicParsing="false" onAction="#resetTimer" prefHeight="104.0" prefWidth="238.0" text="Reset" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="37.0" />
                                  </font>
@@ -96,13 +96,14 @@
                         <Font size="56.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="11.0" layoutY="83.0" prefHeight="419.0" prefWidth="451.0">
+                  <TableView fx:id="dateTimeLapTable" layoutX="11.0" layoutY="83.0" prefHeight="406.0" prefWidth="451.0">
                     <columns>
-                      <TableColumn prefWidth="141.0" text="Date" />
-                      <TableColumn prefWidth="143.0" text="Time" />
-                        <TableColumn prefWidth="166.0" text="Lap" />
+                      <TableColumn fx:id="dateColumn" prefWidth="141.0" text="Date" />
+                      <TableColumn fx:id="timeColumn" prefWidth="143.0" text="Time" />
+                        <TableColumn fx:id="lapColumn" prefWidth="166.0" text="Lap" />
                     </columns>
                   </TableView>
+                  <Button fx:id="clearHistoryButton" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#clearHistory" prefHeight="25.0" prefWidth="451.0" text="CLEAR HISTORY" />
                </children>
             </AnchorPane>
          </children>
