@@ -51,9 +51,6 @@ public class MainController implements Initializable {
 	private Button resetButton;
 
 	@FXML
-	private Button testButton;
-
-	@FXML
 	private Button stopButton;
 
 	@FXML
@@ -93,6 +90,13 @@ public class MainController implements Initializable {
 
 		});
 
+		// listener for selection
+		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (newSelection != null) {
+				stopButton.setDisable(false);
+			}
+		});
+
 	}
 
 	@FXML
@@ -109,16 +113,14 @@ public class MainController implements Initializable {
 
 	@FXML
 	void startTimer(ActionEvent event) {
-		if (startButton.getText().equals("START")) {
+		if (startButton.getText().equals("Masstart")) {
 			startButton.setText("STOP");
 			startButton.setStyle("-fx-background-color: red");
 			newTimeline();
-			for (int i = 0; i < skierTable.size(); i++) {
-				skierTable.get(i).startTime();
-			}
+			masstart();
 
 		} else {
-			startButton.setText("START");
+			startButton.setText("Masstart");
 			startButton.setStyle("-fx-background-color: green");
 			timeLine.stop();
 
@@ -169,15 +171,15 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	void test(ActionEvent event) {
-		selectedSkier = tableview.getSelectionModel().getSelectedItem();
-		selectedSkier.startTime();
-	}
-
-	@FXML
 	void stopButton(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.stopTime();
+	}
+
+	public void masstart() {
+		for (int i = 0; i < skierTable.size(); i++) {
+			skierTable.get(i).startTime();
+		}
 	}
 
 }
