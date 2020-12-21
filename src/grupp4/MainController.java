@@ -18,7 +18,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 
-public class SampleController implements Initializable {
+public class MainController implements Initializable {
 	int milliseconds = 0;
 	int seconds = 0;
 	int minutes = 0;
