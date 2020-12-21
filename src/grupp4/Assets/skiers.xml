@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="14.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string>0</string>
+    </void>
+    <void property="name">
+     <string>Anders</string>
+    </void>
+    <void property="number">
+     <int>1</int>
+    </void>
+    <void property="time">
+     <string>00:00:00:00</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string>0</string>
+    </void>
+    <void property="name">
+     <string>Erik</string>
+    </void>
+    <void property="number">
+     <int>2</int>
+    </void>
+    <void property="time">
+     <string>00:00:00:00</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string>0</string>
+    </void>
+    <void property="name">
+     <string>Frida</string>
+    </void>
+    <void property="number">
+     <int>3</int>
+    </void>
+    <void property="time">
+     <string>00:00:00:00</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string>0</string>
+    </void>
+    <void property="name">
+     <string>Mia</string>
+    </void>
+    <void property="number">
+     <int>4</int>
+    </void>
+    <void property="time">
+     <string>00:00:00:00</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string>0</string>
+    </void>
+    <void property="name">
+     <string>Alex</string>
+    </void>
+    <void property="number">
+     <int>5</int>
+    </void>
+    <void property="time">
+     <string>00:00:00:00</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

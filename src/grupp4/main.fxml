@@ -79,12 +79,7 @@
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <TableView layoutX="14.0" layoutY="9.0" prefHeight="375.0" prefWidth="439.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="9.0">
-                          <columns>
-                            <TableColumn prefWidth="178.0" text="Skier" />
-                            <TableColumn prefWidth="260.0" text="Total Time" />
-                          </columns>
-                        </TableView>
+                        <Button fx:id="testButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" text="test" />
                      </children>
                   </AnchorPane>
                </children>
@@ -96,11 +91,12 @@
                         <Font size="56.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="dateTimeLapTable" layoutX="11.0" layoutY="83.0" prefHeight="406.0" prefWidth="451.0">
+                  <TableView fx:id="tableview" layoutX="11.0" layoutY="83.0" prefHeight="406.0" prefWidth="451.0">
                     <columns>
-                      <TableColumn fx:id="dateColumn" prefWidth="141.0" text="Date" />
-                      <TableColumn fx:id="timeColumn" prefWidth="143.0" text="Time" />
-                        <TableColumn fx:id="lapColumn" prefWidth="166.0" text="Lap" />
+                        <TableColumn fx:id="skierColumn" prefWidth="132.0" text="Skier" />
+                      <TableColumn fx:id="timeColumn" prefWidth="94.0" text="Time" />
+                        <TableColumn fx:id="lapColumn" prefWidth="120.0" text="Lap" />
+                      <TableColumn fx:id="dateColumn" prefWidth="104.0" text="Date" />
                     </columns>
                   </TableView>
                   <Button fx:id="clearHistoryButton" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#clearHistory" prefHeight="25.0" prefWidth="451.0" text="CLEAR HISTORY" />
