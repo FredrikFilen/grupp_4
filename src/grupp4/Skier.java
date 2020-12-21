@@ -5,12 +5,14 @@ import java.io.Serializable;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
 public class Skier implements Serializable {
 	private String name;
 	private int number;
-	private String time;
+	private StringProperty time = new SimpleStringProperty(this, "time", "");
 	private String lap;
 
 	Timeline timeLine;
@@ -25,8 +27,20 @@ public class Skier implements Serializable {
 	public Skier(String name, int number, String time, String lap) {
 		this.name = name;
 		this.number = number;
-		this.time = time;
+		this.setTimeProperty(time);
 		this.lap = lap;
+	}
+
+	public StringProperty timeProperty() {
+		return time;
+	}
+
+	public void setTimeProperty(String time) {
+		this.time.set(time);
+	}
+
+	public String getTimeProperty() {
+		return time.get();
 	}
 
 	public String getName() {
@@ -45,13 +59,13 @@ public class Skier implements Serializable {
 		this.number = number;
 	}
 
-	public String getTime() {
-		return time;
-	}
+	/*
+	 * public String getTime() { return time; }
+	 */
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+	/*
+	 * public void setTime(String time) { this.time = time; }
+	 */
 
 	public String getLap() {
 		return lap;
@@ -87,16 +101,16 @@ public class Skier implements Serializable {
 				seconds = 0;
 				minutes++;
 			}
-			time = String.format("%02d : %02d : %03d", minutes, seconds, milliseconds);
-			this.setTime(time);
+
+			this.setTimeProperty(String.format("%02d : %02d : %03d", minutes, seconds, milliseconds));
 
 		}));
-		timeLine.setCycleCount(Animation.INDEFINITE);
-		timeLine.play();
+		this.timeLine.setCycleCount(Animation.INDEFINITE);
+		this.timeLine.play();
 	}
 
 	public void stopTime() {
-		timeLine.stop();
+		this.timeLine.stop();
 	}
 
 }

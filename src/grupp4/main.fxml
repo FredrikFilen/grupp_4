@@ -79,7 +79,8 @@
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="testButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" text="test" />
+                        <Button fx:id="testButton" layoutX="14.0" layoutY="29.0" mnemonicParsing="false" onAction="#test" text=" test start" />
+                        <Button fx:id="stopButton" layoutX="129.0" layoutY="29.0" mnemonicParsing="false" onAction="#stopButton" text="stop" />
                      </children>
                   </AnchorPane>
                </children>
@@ -96,7 +97,6 @@
                         <TableColumn fx:id="skierColumn" prefWidth="132.0" text="Skier" />
                       <TableColumn fx:id="timeColumn" prefWidth="94.0" text="Time" />
                         <TableColumn fx:id="lapColumn" prefWidth="120.0" text="Lap" />
-                      <TableColumn fx:id="dateColumn" prefWidth="104.0" text="Date" />
                     </columns>
                   </TableView>
                   <Button fx:id="clearHistoryButton" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#clearHistory" prefHeight="25.0" prefWidth="451.0" text="CLEAR HISTORY" />

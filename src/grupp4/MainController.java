@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,6 +54,9 @@ public class MainController implements Initializable {
 	private Button testButton;
 
 	@FXML
+	private Button stopButton;
+
+	@FXML
 	private Button clearHistoryButton;
 
 	@FXML
@@ -69,6 +74,7 @@ public class MainController implements Initializable {
 	@FXML
 	private TableColumn<Skier, String> lapColumn;
 
+	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		skierTable = FXCollections.observableArrayList(skierList);
@@ -77,6 +83,15 @@ public class MainController implements Initializable {
 		lapColumn.setCellValueFactory(new PropertyValueFactory<>("lap"));
 
 		tableview.setItems(skierTable);
+
+		skierTable.get(0).timeProperty().addListener(new ChangeListener() {
+
+			@Override
+			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+				tableview.refresh();
+			}
+
+		});
 
 	}
 
@@ -98,7 +113,9 @@ public class MainController implements Initializable {
 			startButton.setText("STOP");
 			startButton.setStyle("-fx-background-color: red");
 			newTimeline();
-			// createSkiers();
+			for (int i = 0; i < skierTable.size(); i++) {
+				skierTable.get(i).startTime();
+			}
 
 		} else {
 			startButton.setText("START");
@@ -153,8 +170,14 @@ public class MainController implements Initializable {
 
 	@FXML
 	void test(ActionEvent event) {
-		selectedSkier = (Skier) tableview.getSelectionModel().getSelectedItem();
-		selectedSkier.start();
+		selectedSkier = tableview.getSelectionModel().getSelectedItem();
+		selectedSkier.startTime();
+	}
+
+	@FXML
+	void stopButton(ActionEvent event) {
+		selectedSkier = tableview.getSelectionModel().getSelectedItem();
+		selectedSkier.stopTime();
 	}
 
 }
