@@ -1,11 +1,14 @@
 package grupp4;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +22,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 
 public class MainController implements Initializable {
+
+	// read and populate list from xml file
+
+	private static ArrayList<Skier> skierList = new ArrayList<Skier>(XML.decode());
+	// private static ArrayList<Skier> skierList = new ArrayList<Skier>();
+
+	// populates the observablelist
+	ObservableList<Skier> skierTable = FXCollections.observableArrayList(skierList);
+
+	// variable to track the selected skier
+	private static Skier selectedSkier;
+
+	// for the timedisplay
 	int milliseconds = 0;
 	int seconds = 0;
 	int minutes = 0;
@@ -35,33 +51,53 @@ public class MainController implements Initializable {
 	private Button resetButton;
 
 	@FXML
+	private Button stopButton;
+
+	@FXML
 	private Button clearHistoryButton;
 
 	@FXML
 	private Label timerDisplay;
 
 	@FXML
-	private TableView<DateTimeLap> dateTimeLapTable;
+	private TableView<Skier> tableview;
 
 	@FXML
-	private TableColumn<DateTimeLap, String> dateColumn;
+	private TableColumn<Skier, String> skierColumn;
 
 	@FXML
-	private TableColumn<DateTimeLap, String> timeColumn;
+	private TableColumn<Skier, String> timeColumn;
 
 	@FXML
-	private TableColumn<DateTimeLap, String> lapColumn;
+	private TableColumn<Skier, String> lapColumn;
 
+	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+		skierTable = FXCollections.observableArrayList(skierList);
+		skierColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+		lapColumn.setCellValueFactory(new PropertyValueFactory<>("lap"));
 
-		dateTimeLapTable.setItems(savedTime);
+		tableview.setItems(skierTable);
+
+		skierTable.get(0).timeProperty().addListener(new ChangeListener() {
+
+			@Override
+			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+				tableview.refresh();
+			}
+
+		});
+
+		// listener for selection
+		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			if (newSelection != null) {
+				stopButton.setDisable(false);
+			}
+		});
 
 	}
-
-	ObservableList<DateTimeLap> savedTime = FXCollections.observableArrayList();
 
 	@FXML
 	void resetTimer(ActionEvent event) {
@@ -77,16 +113,17 @@ public class MainController implements Initializable {
 
 	@FXML
 	void startTimer(ActionEvent event) {
-		if (startButton.getText().equals("START")) {
+		if (startButton.getText().equals("Masstart")) {
 			startButton.setText("STOP");
 			startButton.setStyle("-fx-background-color: red");
 			newTimeline();
+			masstart();
 
 		} else {
-			startButton.setText("START");
+			startButton.setText("Masstart");
 			startButton.setStyle("-fx-background-color: green");
 			timeLine.stop();
-			savedTime.add(new DateTimeLap(timeToDisplay));
+
 		}
 	}
 
@@ -112,7 +149,37 @@ public class MainController implements Initializable {
 
 	@FXML
 	void clearHistory(ActionEvent event) {
-		dateTimeLapTable.getItems().clear();
+		tableview.getItems().clear();
+	}
+
+	public void createSkiers() {
+		Skier skier1 = new Skier("Anders", 1, "00:00:00:00", "0");
+		Skier skier2 = new Skier("Erik", 2, "00:00:00:00", "0");
+		Skier skier3 = new Skier("Frida", 3, "00:00:00:00", "0");
+		Skier skier4 = new Skier("Mia", 4, "00:00:00:00", "0");
+		Skier skier5 = new Skier("Alex", 5, "00:00:00:00", "0");
+		skierList.add(skier1);
+		skierList.add(skier2);
+		skierList.add(skier3);
+		skierList.add(skier4);
+		skierList.add(skier5);
+
+	}
+
+	public static ArrayList<Skier> getSkierList() {
+		return skierList;
+	}
+
+	@FXML
+	void stopButton(ActionEvent event) {
+		selectedSkier = tableview.getSelectionModel().getSelectedItem();
+		selectedSkier.stopTime();
+	}
+
+	public void masstart() {
+		for (int i = 0; i < skierTable.size(); i++) {
+			skierTable.get(i).startTime();
+		}
 	}
 
 }

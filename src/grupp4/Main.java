@@ -7,6 +7,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	public void init() {
+
+	}
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
@@ -18,6 +22,10 @@ public class Main extends Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void stop() {
+		XML.encode(MainController.getSkierList());
 	}
 
 	public static void main(String[] args) {
