@@ -54,6 +54,9 @@ public class MainController implements Initializable {
 	private Button stopButton;
 
 	@FXML
+	private Button individuellstartButton;
+
+	@FXML
 	private Button clearHistoryButton;
 
 	@FXML
@@ -81,6 +84,7 @@ public class MainController implements Initializable {
 
 		tableview.setItems(skierTable);
 
+		// listener for changes in observablelist
 		skierTable.get(0).timeProperty().addListener(new ChangeListener() {
 
 			@Override
@@ -174,6 +178,13 @@ public class MainController implements Initializable {
 	void stopButton(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.stopTime();
+	}
+
+	@FXML
+	void individuellstartButtonPressed(ActionEvent event) {
+		IndividualStart individualstart = new IndividualStart();
+		individualstart.start();
+
 	}
 
 	public void masstart() {
