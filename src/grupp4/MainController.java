@@ -54,10 +54,19 @@ public class MainController implements Initializable {
 	private Button stopButton;
 
 	@FXML
+	private Button lapButton;
+
+	@FXML
 	private Button individuellstartButton;
 
 	@FXML
 	private Button clearHistoryButton;
+
+	@FXML
+	private Button printResultButtonj;
+
+	@FXML
+	private Button jaktstartButton;
 
 	@FXML
 	private Label timerDisplay;
@@ -98,6 +107,7 @@ public class MainController implements Initializable {
 		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				stopButton.setDisable(false);
+				lapButton.setDisable(false);
 			}
 		});
 
@@ -111,7 +121,6 @@ public class MainController implements Initializable {
 		minutes = 0;
 
 		timerDisplay.setText("00 : 00 : 000");
-		startButton.setText("START");
 		startButton.setStyle("-fx-background-color: green");
 	}
 
@@ -153,7 +162,10 @@ public class MainController implements Initializable {
 
 	@FXML
 	void clearHistory(ActionEvent event) {
-		tableview.getItems().clear();
+		for (int i = 0; i < skierList.size(); i++) {
+			skierList.get(i).setTimeProperty("");
+			skierList.get(i).setLap("");
+		}
 	}
 
 	public void createSkiers() {
@@ -180,6 +192,13 @@ public class MainController implements Initializable {
 		selectedSkier.stopTime();
 	}
 
+	public void masstart() {
+		for (int i = 0; i < skierTable.size(); i++) {
+			skierTable.get(i).startTime();
+		}
+		jaktstartButton.setDisable(false);
+	}
+
 	@FXML
 	void individuellstartButtonPressed(ActionEvent event) {
 		IndividualStart individualstart = new IndividualStart();
@@ -187,10 +206,25 @@ public class MainController implements Initializable {
 
 	}
 
-	public void masstart() {
+	@FXML
+	void jaktstartButtonPressed(ActionEvent event) {
+		SkierSorter skiersorter = new SkierSorter(skierList);
+		skierList = skiersorter.getSortedSkierListByTime();
+
+		Jaktstart jaktstart = new Jaktstart();
+		jaktstart.start();
+
 		for (int i = 0; i < skierTable.size(); i++) {
-			skierTable.get(i).startTime();
+			System.out.println(skierTable.get(i).getName());
+			System.out.println(skierTable.get(i).getResultInMilliseconds());
 		}
+
+	}
+
+	@FXML
+	void lapButtonPressed(ActionEvent event) {
+		selectedSkier = tableview.getSelectionModel().getSelectedItem();
+		selectedSkier.setLap(selectedSkier.getTimeProperty());
 	}
 
 }
