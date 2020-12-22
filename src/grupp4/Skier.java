@@ -9,11 +9,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.util.Duration;
 
-public class Skier implements Serializable {
+public class Skier implements Serializable, Comparable<Skier> {
 	private String name;
 	private int number;
 	private StringProperty time = new SimpleStringProperty(this, "time", "");
 	private String lap;
+	long resultInMilliseconds = 0;
 
 	Timeline timeLine;
 	int milliseconds = 0;
@@ -75,6 +76,10 @@ public class Skier implements Serializable {
 		this.lap = lap;
 	}
 
+	public long getResultInMilliseconds() {
+		return resultInMilliseconds;
+	}
+
 	// end of getters and setters
 
 	public void start() {
@@ -88,9 +93,14 @@ public class Skier implements Serializable {
 	}
 
 	public void startTime() {
+		this.milliseconds = 0;
+		this.seconds = 0;
+		this.minutes = 0;
+		this.resultInMilliseconds = 0;
 		this.timeLine = new Timeline(new KeyFrame(Duration.millis(1), e -> {
 
 			milliseconds++;
+			this.resultInMilliseconds += 1;
 
 			if (milliseconds == 1000) {
 				milliseconds = 0;
@@ -111,6 +121,11 @@ public class Skier implements Serializable {
 
 	public void stopTime() {
 		this.timeLine.stop();
+	}
+
+	@Override
+	public int compareTo(Skier skier) {
+		return (int) (this.getResultInMilliseconds() - skier.getResultInMilliseconds());
 	}
 
 }
