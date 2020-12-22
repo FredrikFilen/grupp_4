@@ -88,7 +88,7 @@ public class Skier implements Serializable {
 	}
 
 	public void startTime() {
-		timeLine = new Timeline(new KeyFrame(Duration.millis(1), e -> {
+		this.timeLine = new Timeline(new KeyFrame(Duration.millis(1), e -> {
 
 			milliseconds++;
 

@@ -80,6 +80,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
                         <Button fx:id="stopButton" disable="true" layoutX="32.0" layoutY="90.0" mnemonicParsing="false" onAction="#stopButton" text="Stop Skier" />
+                        <Button fx:id="individuellstartButton" layoutX="41.0" layoutY="164.0" mnemonicParsing="false" onAction="#individuellstartButtonPressed" text="individuell start" />
                      </children>
                   </AnchorPane>
                </children>
