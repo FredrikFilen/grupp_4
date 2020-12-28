@@ -63,24 +63,20 @@
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="individuellstartButton" layoutX="255.0" layoutY="113.0" mnemonicParsing="false" onAction="#individuellstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="individuell start">
+                        <Button fx:id="individuellstartButton" layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#individuellstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="individuell start">
                            <font>
                               <Font size="25.0" />
                            </font></Button>
-                        <Button fx:id="jaktstartButton" disable="true" layoutX="255.0" layoutY="184.0" mnemonicParsing="false" onAction="#jaktstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="jaktstart">
+                        <Button fx:id="jaktstartButton" disable="true" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#jaktstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="jaktstart">
                            <font>
                               <Font size="25.0" />
                            </font></Button>
-                        <Button fx:id="startButton" layoutX="255.0" layoutY="28.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="65.0" prefWidth="222.0" text="Masstart" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                        <Button fx:id="startButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="71.0" prefWidth="222.0" text="Masstart" AnchorPane.bottomAnchor="331.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="24.0">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="resetButton" layoutX="272.0" layoutY="280.0" mnemonicParsing="false" onAction="#resetTimer" prefHeight="76.0" prefWidth="198.0" text="Reset" AnchorPane.bottomAnchor="58.0" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="280.0">
-                           <font>
-                              <Font size="37.0" />
-                           </font>
-                        </Button>
+                        <Button fx:id="stopAll" layoutX="278.0" layoutY="23.0" mnemonicParsing="false" onAction="#stopAllSkiers" prefHeight="59.0" prefWidth="196.0" text="Stop all skiers" />
                      </children>
                   </AnchorPane>
                </children>

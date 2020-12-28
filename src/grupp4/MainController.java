@@ -55,6 +55,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button lapButton;
+	
+	@FXML
+    private Button stopAll;
 
 	@FXML
 	private Button individuellstartButton;
@@ -115,13 +118,7 @@ public class MainController implements Initializable {
 
 	@FXML
 	void resetTimer(ActionEvent event) {
-		timeLine.stop();
-		milliseconds = 0;
-		seconds = 0;
-		minutes = 0;
-
-		timerDisplay.setText("00 : 00 : 000");
-		startButton.setStyle("-fx-background-color: green");
+		
 	}
 
 	@FXML
@@ -159,6 +156,17 @@ public class MainController implements Initializable {
 		timeLine.setCycleCount(Animation.INDEFINITE);
 		timeLine.play();
 	}
+	
+    @FXML
+    void stopAllSkiers(ActionEvent event) {
+    	timeLine.stop();
+    	
+    	for(int i = 0; i<skierList.size(); i++) {
+    		skierList.get(i).stopTime();
+    	}
+
+
+    }
 
 	@FXML
 	void clearHistory(ActionEvent event) {
@@ -203,6 +211,14 @@ public class MainController implements Initializable {
 	void individuellstartButtonPressed(ActionEvent event) {
 		IndividualStart individualstart = new IndividualStart();
 		individualstart.start();
+		
+		minutes = 0;
+		seconds = 0;
+		milliseconds = 0;
+		
+		newTimeline();
+		
+		jaktstartButton.setDisable(false);
 
 	}
 
@@ -210,13 +226,16 @@ public class MainController implements Initializable {
 	void jaktstartButtonPressed(ActionEvent event) {
 		SkierSorter skiersorter = new SkierSorter(skierList);
 		skierList = skiersorter.getSortedSkierListByTime();
+		
+		minutes = 0;
+		seconds = 0;
+		milliseconds = 0;
+		newTimeline();
 
 		Jaktstart jaktstart = new Jaktstart();
 		jaktstart.start();
 		
-		for(int i= 0; i< skierTable.size(); i++) {
-			skierTable.remove(i);
-		}
+		
 		
 
 		for (int i = 0; i < skierTable.size(); i++) {
