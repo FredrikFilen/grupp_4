@@ -7,13 +7,29 @@
      <string></string>
     </void>
     <void property="name">
+     <string>Anders</string>
+    </void>
+    <void property="number">
+     <int>1</int>
+    </void>
+    <void property="timeProperty">
+     <string>02 : 30 : 802</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
      <string>Erik</string>
     </void>
     <void property="number">
      <int>2</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 13 : 796</string>
+     <string>00 : 09 : 188</string>
     </void>
    </object>
   </void>
@@ -29,39 +45,7 @@
      <int>1</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 11 : 950</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="lap">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Mia</string>
-    </void>
-    <void property="number">
-     <int>4</int>
-    </void>
-    <void property="timeProperty">
-     <string>00 : 09 : 446</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="lap">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Alex</string>
-    </void>
-    <void property="number">
-     <int>5</int>
-    </void>
-    <void property="timeProperty">
-     <string>00 : 09 : 555</string>
+     <string>02 : 28 : 425</string>
     </void>
    </object>
   </void>
@@ -77,7 +61,103 @@
      <int>3</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 06 : 921</string>
+     <string>00 : 09 : 187</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Alex</string>
+    </void>
+    <void property="number">
+     <int>5</int>
+    </void>
+    <void property="timeProperty">
+     <string>02 : 26 : 161</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Alex</string>
+    </void>
+    <void property="number">
+     <int>5</int>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 09 : 187</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Frida</string>
+    </void>
+    <void property="number">
+     <int>3</int>
+    </void>
+    <void property="timeProperty">
+     <string>02 : 23 : 832</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Mia</string>
+    </void>
+    <void property="number">
+     <int>4</int>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 09 : 171</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Mia</string>
+    </void>
+    <void property="number">
+     <int>4</int>
+    </void>
+    <void property="timeProperty">
+     <string>02 : 20 : 956</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Erik</string>
+    </void>
+    <void property="number">
+     <int>2</int>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 09 : 171</string>
     </void>
    </object>
   </void>

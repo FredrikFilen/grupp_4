@@ -213,6 +213,11 @@ public class MainController implements Initializable {
 
 		Jaktstart jaktstart = new Jaktstart();
 		jaktstart.start();
+		
+		for(int i= 0; i< skierTable.size(); i++) {
+			skierTable.remove(i);
+		}
+		
 
 		for (int i = 0; i < skierTable.size(); i++) {
 			System.out.println(skierTable.get(i).getName());
