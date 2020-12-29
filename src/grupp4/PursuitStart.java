@@ -1,6 +1,12 @@
 package grupp4;
 
-public class Jaktstart extends Thread {
+
+
+/*Calculates the timedifference between the skiers from the last result and uses the result for the startdelay.
+Starts each skier after that delay. Doesnt create a delay when it is the last skiers turn to start.
+ * */
+
+public class PursuitStart extends Thread {
 	public void run() {
 
 		for (int i = 0; i < MainController.getSkierList().size(); i++) {
@@ -11,7 +17,6 @@ public class Jaktstart extends Thread {
 				try {
 					Thread.sleep(delay);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {

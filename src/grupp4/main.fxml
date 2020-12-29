@@ -20,13 +20,6 @@
           <RowConstraints maxHeight="278.0" minHeight="10.0" prefHeight="102.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="524.0" minHeight="10.0" prefHeight="517.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>
-            <Label fx:id="welcomeLabel" alignment="CENTER" prefHeight="108.0" prefWidth="947.0" text="Välkommen till skidprogrammet!">
-               <font>
-                  <Font name="Calibri" size="52.0" />
-               </font>
-            </Label>
-         </children>
       </GridPane>
       <GridPane layoutX="-1.0" layoutY="105.0" prefHeight="520.0" prefWidth="954.0">
         <columnConstraints>
@@ -63,20 +56,20 @@
                   </GridPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="individuellstartButton" layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#individuellstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="individuell start">
+                        <Button fx:id="individualStartButton" layoutX="14.0" layoutY="105.0" mnemonicParsing="false" onAction="#individualStartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="Individual Start">
                            <font>
                               <Font size="25.0" />
                            </font></Button>
-                        <Button fx:id="jaktstartButton" disable="true" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#jaktstartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="jaktstart">
+                        <Button fx:id="pursuitStartButton" disable="true" layoutX="14.0" layoutY="186.0" mnemonicParsing="false" onAction="#pursuitStartButtonPressed" prefHeight="65.0" prefWidth="222.0" text="Pursuit Start">
                            <font>
                               <Font size="25.0" />
                            </font></Button>
-                        <Button fx:id="startButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="71.0" prefWidth="222.0" text="Masstart" AnchorPane.bottomAnchor="331.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="24.0">
+                        <Button fx:id="startButton" layoutX="14.0" layoutY="24.0" mnemonicParsing="false" onAction="#startTimer" prefHeight="71.0" prefWidth="222.0" text="Mass start" AnchorPane.bottomAnchor="331.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.0" AnchorPane.topAnchor="24.0">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="stopAll" layoutX="278.0" layoutY="23.0" mnemonicParsing="false" onAction="#stopAllSkiers" prefHeight="59.0" prefWidth="196.0" text="Stop all skiers" />
+                        <Button fx:id="stopAllButton" layoutX="278.0" layoutY="23.0" mnemonicParsing="false" onAction="#stopAllSkiers" prefHeight="59.0" prefWidth="196.0" text="Stop all skiers" />
                      </children>
                   </AnchorPane>
                </children>
@@ -92,7 +85,7 @@
                     <columns>
                         <TableColumn fx:id="skierColumn" prefWidth="132.0" text="Skier" />
                       <TableColumn fx:id="timeColumn" prefWidth="94.0" text="Time" />
-                        <TableColumn fx:id="lapColumn" prefWidth="120.0" text="Lap" />
+                        <TableColumn fx:id="checkpointColumn" prefWidth="120.0" text="Checkpoint" />
                     </columns>
                   </TableView>
                   <Button fx:id="clearHistoryButton" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#clearHistory" prefHeight="25.0" prefWidth="451.0" text="CLEAR HISTORY" />
@@ -101,7 +94,7 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="lapButton" disable="true" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="53.0" prefWidth="222.0" text="Hålltid">
+                  <Button fx:id="checkpointButton" disable="true" layoutX="14.0" layoutY="56.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="53.0" prefWidth="222.0" text="Checkpoint">
                      <font>
                         <Font size="20.0" />
                      </font>

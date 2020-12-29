@@ -26,10 +26,10 @@ public class MainController implements Initializable {
 	// read and populate list from xml file
 
 	private static ArrayList<Skier> skierList = new ArrayList<Skier>(XML.decode());
-	// private static ArrayList<Skier> skierList = new ArrayList<Skier>();
+	//private static ArrayList<Skier> skierList = new ArrayList<Skier>();
 
 	// populates the observablelist
-	ObservableList<Skier> skierTable = FXCollections.observableArrayList(skierList);
+	ObservableList<Skier> skierObservableList = FXCollections.observableArrayList(skierList);
 
 	// variable to track the selected skier
 	private static Skier selectedSkier;
@@ -42,9 +42,6 @@ public class MainController implements Initializable {
 	Timeline timeLine;
 
 	@FXML
-	private Label welcomeLabel;
-
-	@FXML
 	private Button startButton;
 
 	@FXML
@@ -54,22 +51,19 @@ public class MainController implements Initializable {
 	private Button stopButton;
 
 	@FXML
-	private Button lapButton;
+	private Button checkpointButton;
 	
 	@FXML
-    private Button stopAll;
+    private Button stopAllButton;
 
 	@FXML
-	private Button individuellstartButton;
+	private Button individualStartButton;
 
 	@FXML
 	private Button clearHistoryButton;
 
 	@FXML
-	private Button printResultButtonj;
-
-	@FXML
-	private Button jaktstartButton;
+	private Button pursuitStartButton;
 
 	@FXML
 	private Label timerDisplay;
@@ -84,20 +78,20 @@ public class MainController implements Initializable {
 	private TableColumn<Skier, String> timeColumn;
 
 	@FXML
-	private TableColumn<Skier, String> lapColumn;
+	private TableColumn<Skier, String> checkpointColumn;
 
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		skierTable = FXCollections.observableArrayList(skierList);
+		skierObservableList = FXCollections.observableArrayList(skierList);
 		skierColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
-		lapColumn.setCellValueFactory(new PropertyValueFactory<>("lap"));
+		checkpointColumn.setCellValueFactory(new PropertyValueFactory<>("checkpoint"));
 
-		tableview.setItems(skierTable);
+		tableview.setItems(skierObservableList);
 
 		// listener for changes in observablelist
-		skierTable.get(0).timeProperty().addListener(new ChangeListener() {
+		skierObservableList.get(0).timeProperty().addListener(new ChangeListener() {
 
 			@Override
 			public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -110,29 +104,24 @@ public class MainController implements Initializable {
 		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				stopButton.setDisable(false);
-				lapButton.setDisable(false);
+				checkpointButton.setDisable(false);
 			}
 		});
 
 	}
 
 	@FXML
-	void resetTimer(ActionEvent event) {
-		
-	}
-
-	@FXML
 	void startTimer(ActionEvent event) {
-		if (startButton.getText().equals("Masstart")) {
+		if (startButton.getText().equals("Mass start")) {
 			startButton.setText("STOP");
 			startButton.setStyle("-fx-background-color: red");
 			newTimeline();
-			masstart();
+			mass_Start();
 
 		} else {
-			startButton.setText("Masstart");
+			startButton.setText("Mass Start");
 			startButton.setStyle("-fx-background-color: green");
-			timeLine.stop();
+			this.timeLine.stop();
 
 		}
 	}
@@ -172,7 +161,7 @@ public class MainController implements Initializable {
 	void clearHistory(ActionEvent event) {
 		for (int i = 0; i < skierList.size(); i++) {
 			skierList.get(i).setTimeProperty("");
-			skierList.get(i).setLap("");
+			skierList.get(i).setCheckpoint("");
 		}
 	}
 
@@ -187,7 +176,6 @@ public class MainController implements Initializable {
 		skierList.add(skier3);
 		skierList.add(skier4);
 		skierList.add(skier5);
-
 	}
 
 	public static ArrayList<Skier> getSkierList() {
@@ -200,15 +188,15 @@ public class MainController implements Initializable {
 		selectedSkier.stopTime();
 	}
 
-	public void masstart() {
-		for (int i = 0; i < skierTable.size(); i++) {
-			skierTable.get(i).startTime();
+	public void mass_Start() {
+		for (int i = 0; i < skierObservableList.size(); i++) {
+			skierObservableList.get(i).startTime();
 		}
-		jaktstartButton.setDisable(false);
+		pursuitStartButton.setDisable(false);
 	}
 
 	@FXML
-	void individuellstartButtonPressed(ActionEvent event) {
+	void individualStartButtonPressed(ActionEvent event) {
 		IndividualStart individualstart = new IndividualStart();
 		individualstart.start();
 		
@@ -218,12 +206,12 @@ public class MainController implements Initializable {
 		
 		newTimeline();
 		
-		jaktstartButton.setDisable(false);
+		pursuitStartButton.setDisable(false);
 
 	}
 
 	@FXML
-	void jaktstartButtonPressed(ActionEvent event) {
+	void pursuitStartButtonPressed(ActionEvent event) {
 		SkierSorter skiersorter = new SkierSorter(skierList);
 		skierList = skiersorter.getSortedSkierListByTime();
 		
@@ -232,23 +220,14 @@ public class MainController implements Initializable {
 		milliseconds = 0;
 		newTimeline();
 
-		Jaktstart jaktstart = new Jaktstart();
+		PursuitStart jaktstart = new PursuitStart();
 		jaktstart.start();
-		
-		
-		
-
-		for (int i = 0; i < skierTable.size(); i++) {
-			System.out.println(skierTable.get(i).getName());
-			System.out.println(skierTable.get(i).getResultInMilliseconds());
-		}
-
 	}
 
 	@FXML
 	void lapButtonPressed(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
-		selectedSkier.setLap(selectedSkier.getTimeProperty());
+		selectedSkier.setCheckpoint(selectedSkier.getTimeProperty());
 	}
 
 }

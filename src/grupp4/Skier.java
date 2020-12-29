@@ -13,7 +13,7 @@ public class Skier implements Serializable, Comparable<Skier> {
 	private String name;
 	private int number;
 	private StringProperty time = new SimpleStringProperty(this, "time", "");
-	private String lap;
+	private String checkpoint;
 	long resultInMilliseconds = 0;
 
 	Timeline timeLine;
@@ -29,7 +29,7 @@ public class Skier implements Serializable, Comparable<Skier> {
 		this.name = name;
 		this.number = number;
 		this.setTimeProperty(time);
-		this.lap = lap;
+		this.checkpoint = lap;
 	}
 
 	public StringProperty timeProperty() {
@@ -60,20 +60,12 @@ public class Skier implements Serializable, Comparable<Skier> {
 		this.number = number;
 	}
 
-	/*
-	 * public String getTime() { return time; }
-	 */
-
-	/*
-	 * public void setTime(String time) { this.time = time; }
-	 */
-
-	public String getLap() {
-		return lap;
+	public String getCheckpoint() {
+		return checkpoint;
 	}
 
-	public void setLap(String lap) {
-		this.lap = lap;
+	public void setCheckpoint(String lap) {
+		this.checkpoint = lap;
 	}
 
 	public long getResultInMilliseconds() {
