@@ -7,45 +7,13 @@
      <string></string>
     </void>
     <void property="name">
-     <string>Erik</string>
+     <string>Frida</string>
     </void>
     <void property="number">
-     <int>2</int>
+     <int>3</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 13 : 796</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="lap">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Anders</string>
-    </void>
-    <void property="number">
-     <int>1</int>
-    </void>
-    <void property="timeProperty">
-     <string>00 : 11 : 950</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="lap">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Mia</string>
-    </void>
-    <void property="number">
-     <int>4</int>
-    </void>
-    <void property="timeProperty">
-     <string>00 : 09 : 446</string>
+     <string>00 : 23 : 800</string>
     </void>
    </object>
   </void>
@@ -61,7 +29,7 @@
      <int>5</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 09 : 555</string>
+     <string>00 : 23 : 800</string>
     </void>
    </object>
   </void>
@@ -71,13 +39,45 @@
      <string></string>
     </void>
     <void property="name">
-     <string>Frida</string>
+     <string>Mia</string>
     </void>
     <void property="number">
-     <int>3</int>
+     <int>4</int>
     </void>
     <void property="timeProperty">
-     <string>00 : 06 : 921</string>
+     <string>00 : 23 : 800</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Erik</string>
+    </void>
+    <void property="number">
+     <int>2</int>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 23 : 800</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="lap">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Anders</string>
+    </void>
+    <void property="number">
+     <int>1</int>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 23 : 800</string>
     </void>
    </object>
   </void>
