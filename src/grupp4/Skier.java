@@ -25,6 +25,14 @@ public class Skier implements Serializable, Comparable<Skier> {
 
 	}
 
+	/**
+	 * 
+	 * @param name
+	 * @param number
+	 * @param time
+	 * @param lap
+	 */
+
 	public Skier(String name, int number, String time, String lap) {
 		this.name = name;
 		this.number = number;
@@ -114,6 +122,12 @@ public class Skier implements Serializable, Comparable<Skier> {
 	public void stopTime() {
 		this.timeLine.stop();
 	}
+
+	/*
+	 * This method implements the comparable interface and sort the skiers in
+	 * ascending time order. The result of this method will be used as input in
+	 * pursuit start.
+	 */
 
 	@Override
 	public int compareTo(Skier skier) {
