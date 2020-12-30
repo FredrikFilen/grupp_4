@@ -1,6 +1,5 @@
 # grupp_4
-gemensam repo för gruppuppgift
+Vi körde på varianten stoppursklocka. 
+Vi siktar på VG och vi skulle gärna vilja få feedback på hur vi når upp till det betyget.
 
-TRELLO: https://trello.com/invite/b/hiVCK5BS/26314c9a5660797cf0eeb079fb85e592/gruppuppgift-grupp4
-
-Google docs, for notes and planning: https://docs.google.com/document/d/1jBKJdO4EETsNBRy5Y96M7l0-ZC67ZLdeGb06zuR6qZc/edit?usp=sharing
+När man kör programmet så läser programmet in fem åkare från den bifogade XML-filen. Man får sedan valet att välja vilket typ av lopp man vill köra (man kan inte köra jaktstarten innan masstarten eller individuellstart har körts först). Masstart startar alla åkare samtidigt, individuellstart startare åkare med fem sekunders mellanrum och jaktstarten baseras på resultaten från tidigare lopp. För att manipulerare en viss åkare, välj den åkaren och tryck sedan på "checkpoint" eller "stop skier" beroende på vad du vill göra. För att nollställa alla åkare, tryck på "clear history".
