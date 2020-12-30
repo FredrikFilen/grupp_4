@@ -48,13 +48,10 @@ public class MainController implements Initializable {
 	Timeline timeLine;
 
 	@FXML
-	private Button startButton;
+	private Button mass_StartButton;
 
 	@FXML
-	private Button resetButton;
-
-	@FXML
-	private Button stopButton;
+	private Button stopSkierButton;
 
 	@FXML
 	private Button checkpointButton;
@@ -110,7 +107,7 @@ public class MainController implements Initializable {
 		// listener for selection
 		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
-				stopButton.setDisable(false);
+				stopSkierButton.setDisable(false);
 				checkpointButton.setDisable(false);
 			}
 		});
@@ -118,17 +115,17 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	void startTimer(ActionEvent event) {
-		if (startButton.getText().equals("Mass start")) {
-			startButton.setText("STOP");
-			startButton.setStyle("-fx-background-color: red");
+	void mass_StartTimer(ActionEvent event) {
+		if (mass_StartButton.getText().equals("Mass start")) {
+			mass_StartButton.setText("STOP RACE");
 			newTimeline();
 			mass_Start();
 
 		} else {
-			startButton.setText("Mass Start");
-			startButton.setStyle("-fx-background-color: green");
+			mass_StartButton.setText("Mass Start");
 			this.timeLine.stop();
+			individualStartButton.setDisable(false);
+			pursuitStartButton.setDisable(false);
 
 		}
 	}
@@ -155,11 +152,12 @@ public class MainController implements Initializable {
 	
     @FXML
     void stopAllSkiers(ActionEvent event) {
-    	timeLine.stop();
+    	//timeLine.stop();
     	
     	for(int i = 0; i<skierList.size(); i++) {
     		skierList.get(i).stopTime();
     	}
+    	
 
 
     }
@@ -199,36 +197,70 @@ public class MainController implements Initializable {
 		for (int i = 0; i < skierObservableList.size(); i++) {
 			skierObservableList.get(i).startTime();
 		}
-		pursuitStartButton.setDisable(false);
+		individualStartButton.setDisable(true);
+		pursuitStartButton.setDisable(true);
 	}
 
 	@FXML
 	void individualStartButtonPressed(ActionEvent event) {
-		IndividualStart individualstart = new IndividualStart();
-		individualstart.start();
 		
-		minutes = 0;
-		seconds = 0;
-		milliseconds = 0;
-		
-		newTimeline();
-		
-		pursuitStartButton.setDisable(false);
+		if (individualStartButton.getText().equals("Individual Start")) {
+			individualStartButton.setText("STOP RACE");
+			IndividualStart individualstart = new IndividualStart();
+			individualstart.start();
+			
+			minutes = 0;
+			seconds = 0;
+			milliseconds = 0;
+			
+			newTimeline();
+			
+			mass_StartButton.setDisable(true);
+			pursuitStartButton.setDisable(true);
+			
+
+		} else {
+			individualStartButton.setText("Individual Start");
+			this.timeLine.stop();
+			mass_StartButton.setDisable(false);
+			pursuitStartButton.setDisable(false);
+
+		}
+
 
 	}
 
 	@FXML
 	void pursuitStartButtonPressed(ActionEvent event) {
-		SkierSorter skiersorter = new SkierSorter(skierList);
-		skierList = skiersorter.getSortedSkierListByTime();
 		
-		minutes = 0;
-		seconds = 0;
-		milliseconds = 0;
-		newTimeline();
+		if (pursuitStartButton.getText().equals("Pursuit Start")) {
+			pursuitStartButton.setText("STOP RACE");
+			SkierSorter skiersorter = new SkierSorter(skierList);
+			skierList = skiersorter.getSortedSkierListByTime();
+			
+			minutes = 0;
+			seconds = 0;
+			milliseconds = 0;
+			
+			newTimeline();
+			
+			PursuitStart jaktstart = new PursuitStart();
+			jaktstart.start();
+			
+			mass_StartButton.setDisable(true);
+			individualStartButton.setDisable(true);
+			
 
-		PursuitStart jaktstart = new PursuitStart();
-		jaktstart.start();
+		} else {
+			pursuitStartButton.setText("Pursuit Start");
+			this.timeLine.stop();
+			mass_StartButton.setDisable(false);
+			individualStartButton.setDisable(false);
+
+		}
+		
+
+		
 	}
 
 	@FXML
