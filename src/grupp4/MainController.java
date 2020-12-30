@@ -32,7 +32,7 @@ public class MainController implements Initializable {
 	// read and populate list from xml file
 
 	private static ArrayList<Skier> skierList = new ArrayList<Skier>(XML.decode());
-	//private static ArrayList<Skier> skierList = new ArrayList<Skier>();
+	// private static ArrayList<Skier> skierList = new ArrayList<Skier>();
 
 	// populates the observablelist
 	ObservableList<Skier> skierObservableList = FXCollections.observableArrayList(skierList);
@@ -55,9 +55,9 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button checkpointButton;
-	
+
 	@FXML
-    private Button stopAllButton;
+	private Button stopAllButton;
 
 	@FXML
 	private Button individualStartButton;
@@ -82,7 +82,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	private TableColumn<Skier, String> checkpointColumn;
-
 
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
@@ -149,18 +148,15 @@ public class MainController implements Initializable {
 		timeLine.setCycleCount(Animation.INDEFINITE);
 		timeLine.play();
 	}
-	
-    @FXML
-    void stopAllSkiers(ActionEvent event) {
-    	//timeLine.stop();
-    	
-    	for(int i = 0; i<skierList.size(); i++) {
-    		skierList.get(i).stopTime();
-    	}
-    	
 
+	@FXML
+	void stopAllSkiers(ActionEvent event) {
 
-    }
+		for (int i = 0; i < skierList.size(); i++) {
+			skierList.get(i).stopTime();
+		}
+
+	}
 
 	@FXML
 	void clearHistory(ActionEvent event) {
@@ -203,21 +199,20 @@ public class MainController implements Initializable {
 
 	@FXML
 	void individualStartButtonPressed(ActionEvent event) {
-		
+
 		if (individualStartButton.getText().equals("Individual Start")) {
 			individualStartButton.setText("STOP RACE");
 			IndividualStart individualstart = new IndividualStart();
 			individualstart.start();
-			
+
 			minutes = 0;
 			seconds = 0;
 			milliseconds = 0;
-			
+
 			newTimeline();
-			
+
 			mass_StartButton.setDisable(true);
 			pursuitStartButton.setDisable(true);
-			
 
 		} else {
 			individualStartButton.setText("Individual Start");
@@ -227,29 +222,27 @@ public class MainController implements Initializable {
 
 		}
 
-
 	}
 
 	@FXML
 	void pursuitStartButtonPressed(ActionEvent event) {
-		
+
 		if (pursuitStartButton.getText().equals("Pursuit Start")) {
 			pursuitStartButton.setText("STOP RACE");
 			SkierSorter skiersorter = new SkierSorter(skierList);
 			skierList = skiersorter.getSortedSkierListByTime();
-			
+
 			minutes = 0;
 			seconds = 0;
 			milliseconds = 0;
-			
+
 			newTimeline();
-			
+
 			PursuitStart jaktstart = new PursuitStart();
 			jaktstart.start();
-			
+
 			mass_StartButton.setDisable(true);
 			individualStartButton.setDisable(true);
-			
 
 		} else {
 			pursuitStartButton.setText("Pursuit Start");
@@ -258,9 +251,7 @@ public class MainController implements Initializable {
 			individualStartButton.setDisable(false);
 
 		}
-		
 
-		
 	}
 
 	@FXML
