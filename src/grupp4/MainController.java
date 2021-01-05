@@ -123,6 +123,7 @@ public class MainController implements Initializable {
 		} else {
 			mass_StartButton.setText("Mass Start");
 			this.timeLine.stop();
+			stopAllSkiers();
 			individualStartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
 
@@ -149,8 +150,8 @@ public class MainController implements Initializable {
 		timeLine.play();
 	}
 
-	@FXML
-	void stopAllSkiers(ActionEvent event) {
+	
+	void stopAllSkiers() {
 
 		for (int i = 0; i < skierList.size(); i++) {
 			skierList.get(i).stopTime();
@@ -217,6 +218,7 @@ public class MainController implements Initializable {
 		} else {
 			individualStartButton.setText("Individual Start");
 			this.timeLine.stop();
+			stopAllSkiers();
 			mass_StartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
 
@@ -247,6 +249,7 @@ public class MainController implements Initializable {
 		} else {
 			pursuitStartButton.setText("Pursuit Start");
 			this.timeLine.stop();
+			stopAllSkiers();
 			mass_StartButton.setDisable(false);
 			individualStartButton.setDisable(false);
 

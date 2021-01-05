@@ -41,13 +41,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Button fx:id="stopAllButton" layoutX="20.0" layoutY="53.0" mnemonicParsing="false" onAction="#stopAllSkiers" prefHeight="46.0" prefWidth="208.0" text="Stop all skiers">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font></Button>
-                           </children></AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                            <children>
                               <Label fx:id="timerDisplay" layoutX="-21.0" layoutY="-27.0" prefHeight="79.0" prefWidth="401.0" text="00 : 00 : 000" textFill="WHITE">
@@ -55,7 +49,7 @@
                                     <Font size="56.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="checkpointButton" disable="true" layoutX="7.0" layoutY="53.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="46.0" prefWidth="222.0" text="Checkpoint">
+                              <Button fx:id="checkpointButton" disable="true" layoutX="-138.0" layoutY="53.0" mnemonicParsing="false" onAction="#lapButtonPressed" prefHeight="46.0" prefWidth="222.0" text="Checkpoint">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -79,7 +73,7 @@
             </GridPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Button fx:id="stopSkierButton" disable="true" layoutX="8.0" layoutY="53.0" mnemonicParsing="false" onAction="#stopButton" prefHeight="46.0" prefWidth="222.0" text="Stop Skier">
+                  <Button fx:id="stopSkierButton" disable="true" layoutX="-104.0" layoutY="51.0" mnemonicParsing="false" onAction="#stopButton" prefHeight="46.0" prefWidth="222.0" text="Stop Skier">
                      <font>
                         <Font size="20.0" />
                      </font>
