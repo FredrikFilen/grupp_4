@@ -53,20 +53,11 @@ public class MainController implements Initializable {
 	private Button checkpointButton;
 
 	@FXML
-	private Button stopAllButton;
-
-	@FXML
 	private Button individualStartButton;
 	
 	@FXML
     private ChoiceBox<String> delayChoiceBox;
 	
-    @FXML
-    private Button fifteenSecButton;
-
-    @FXML
-    private Button thirtySecButton;
-
 	@FXML
 	private Button clearHistoryButton;
 
@@ -247,7 +238,7 @@ public class MainController implements Initializable {
 			IndividualStart individualstart = new IndividualStart();
 			int selectedindex = delayChoiceBox.getSelectionModel().getSelectedIndex();
 			clearHistory(event);
-			if(selectedindex == 0) {
+			if(selectedindex == 1) {
 				individualstart.setDelay(15000);
 				individualstart.start();
 			}else {
