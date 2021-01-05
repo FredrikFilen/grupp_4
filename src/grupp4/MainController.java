@@ -1,6 +1,6 @@
 package grupp4;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -14,18 +14,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController implements Initializable {
@@ -33,7 +28,7 @@ public class MainController implements Initializable {
 	// read and populate list from xml file
 
 	private static ArrayList<Skier> skierList = new ArrayList<Skier>(XML.decode());
-	// private static ArrayList<Skier> skierList = new ArrayList<Skier>();
+	//private static ArrayList<Skier> skierList = new ArrayList<Skier>();
 
 	// populates the observablelist
 	ObservableList<Skier> skierObservableList = FXCollections.observableArrayList(skierList);
@@ -96,6 +91,7 @@ public class MainController implements Initializable {
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		//initialize tableview and columns
 		skierObservableList = FXCollections.observableArrayList(skierList);
 		skierColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -206,11 +202,21 @@ public class MainController implements Initializable {
 		Skier skier3 = new Skier("Frida", 3, "00:00:00:00", "0");
 		Skier skier4 = new Skier("Mia", 4, "00:00:00:00", "0");
 		Skier skier5 = new Skier("Alex", 5, "00:00:00:00", "0");
+		Skier skier6 = new Skier("Anna", 5, "00:00:00:00", "0");
+		Skier skier7 = new Skier("Lollo", 5, "00:00:00:00", "0");
+		Skier skier8 = new Skier("Fredrik", 5, "00:00:00:00", "0");
+		Skier skier9 = new Skier("Abebe", 5, "00:00:00:00", "0");
+		Skier skier10 = new Skier("Marcus", 5, "00:00:00:00", "0");
 		skierList.add(skier1);
 		skierList.add(skier2);
 		skierList.add(skier3);
 		skierList.add(skier4);
 		skierList.add(skier5);
+		skierList.add(skier6);
+		skierList.add(skier7);
+		skierList.add(skier8);
+		skierList.add(skier9);
+		skierList.add(skier10);
 	}
 
 	public static ArrayList<Skier> getSkierList() {
