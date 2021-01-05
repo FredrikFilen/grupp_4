@@ -18,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -61,6 +62,15 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button individualStartButton;
+	
+	@FXML
+    private ChoiceBox<String> delayChoiceBox;
+	
+    @FXML
+    private Button fifteenSecButton;
+
+    @FXML
+    private Button thirtySecButton;
 
 	@FXML
 	private Button clearHistoryButton;
@@ -86,12 +96,20 @@ public class MainController implements Initializable {
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		//initialize tableview and columns
 		skierObservableList = FXCollections.observableArrayList(skierList);
 		skierColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
 		timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 		checkpointColumn.setCellValueFactory(new PropertyValueFactory<>("checkpoint"));
 
 		tableview.setItems(skierObservableList);
+		
+		//initialize choicebox
+		delayChoiceBox.getItems().add("Choose delay");
+		delayChoiceBox.getItems().add("15 seconds");
+		delayChoiceBox.getItems().add("30 seconds");
+		delayChoiceBox.setValue("Choose delay");
+
 
 		// listener for changes in observablelist
 		skierObservableList.get(0).timeProperty().addListener(new ChangeListener() {
@@ -103,11 +121,20 @@ public class MainController implements Initializable {
 
 		});
 
-		// listener for selection
+		// listener for tableview selection
 		tableview.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
 			if (newSelection != null) {
 				stopSkierButton.setDisable(false);
 				checkpointButton.setDisable(false);
+			}
+		});
+		
+		//listener for choicebox selection
+		delayChoiceBox.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->{
+			if(newSelection != "Choose delay") {
+				individualStartButton.setDisable(false);
+			}else {
+				individualStartButton.setDisable(true);
 			}
 		});
 
@@ -117,15 +144,21 @@ public class MainController implements Initializable {
 	void mass_StartTimer(ActionEvent event) {
 		if (mass_StartButton.getText().equals("Mass start")) {
 			mass_StartButton.setText("STOP RACE");
-			newTimeline();
+			
+			
+			minutes = 0;
+			seconds = 0;
+			milliseconds = 0;
+			clearHistory(event);
 			mass_Start();
+			newTimeline();
 
 		} else {
-			mass_StartButton.setText("Mass Start");
+			mass_StartButton.setText("Mass start");
 			this.timeLine.stop();
 			stopAllSkiers();
-			individualStartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
+			delayChoiceBox.setDisable(false);
 
 		}
 	}
@@ -191,11 +224,12 @@ public class MainController implements Initializable {
 	}
 
 	public void mass_Start() {
-		for (int i = 0; i < skierObservableList.size(); i++) {
-			skierObservableList.get(i).startTime();
-		}
+		Mass_start mass_start = new Mass_start();
+		mass_start.run();
 		individualStartButton.setDisable(true);
 		pursuitStartButton.setDisable(true);
+		delayChoiceBox.setDisable(true);
+	
 	}
 
 	@FXML
@@ -203,9 +237,18 @@ public class MainController implements Initializable {
 
 		if (individualStartButton.getText().equals("Individual Start")) {
 			individualStartButton.setText("STOP RACE");
+			
 			IndividualStart individualstart = new IndividualStart();
-			individualstart.start();
-
+			int selectedindex = delayChoiceBox.getSelectionModel().getSelectedIndex();
+			clearHistory(event);
+			if(selectedindex == 0) {
+				individualstart.setDelay(15000);
+				individualstart.start();
+			}else {
+				individualstart.setDelay(30000);
+				individualstart.start();
+			}
+			
 			minutes = 0;
 			seconds = 0;
 			milliseconds = 0;
@@ -225,6 +268,7 @@ public class MainController implements Initializable {
 		}
 
 	}
+	
 
 	@FXML
 	void pursuitStartButtonPressed(ActionEvent event) {
@@ -233,6 +277,8 @@ public class MainController implements Initializable {
 			pursuitStartButton.setText("STOP RACE");
 			SkierSorter skiersorter = new SkierSorter(skierList);
 			skierList = skiersorter.getSortedSkierListByTime();
+			
+			clearHistory(event);
 
 			minutes = 0;
 			seconds = 0;
@@ -251,14 +297,13 @@ public class MainController implements Initializable {
 			this.timeLine.stop();
 			stopAllSkiers();
 			mass_StartButton.setDisable(false);
-			individualStartButton.setDisable(false);
 
 		}
 
 	}
 
 	@FXML
-	void lapButtonPressed(ActionEvent event) {
+	void checkpointButtonPressed(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.setCheckpoint(selectedSkier.getTimeProperty());
 	}
