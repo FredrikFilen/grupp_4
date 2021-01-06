@@ -20,13 +20,13 @@
             <Font size="25.0" />
          </font>
       </Button>
-      <Button fx:id="pursuitStartButton" disable="true" layoutX="510.0" layoutY="24.0" mnemonicParsing="false" onAction="#pursuitStartButtonPressed" prefHeight="58.0" prefWidth="222.0" text="Pursuit Start">
+      <Button fx:id="pursuitStartButton" layoutX="510.0" layoutY="24.0" mnemonicParsing="false" onAction="#pursuitStartButtonPressed" prefHeight="58.0" prefWidth="222.0" text="Pursuit Start">
          <font>
             <Font size="25.0" />
          </font>
       </Button>
       <Button fx:id="clearHistoryButton" layoutX="53.0" layoutY="613.0" mnemonicParsing="false" onAction="#clearHistory" prefHeight="25.0" prefWidth="638.0" text="CLEAR HISTORY" />
-      <Button fx:id="stopSkierButton" disable="true" layoutX="372.0" layoutY="196.0" mnemonicParsing="false" onAction="#stopButton" prefHeight="46.0" prefWidth="222.0" text="Stop Skier">
+      <Button fx:id="stopSkierButton" disable="true" layoutX="372.0" layoutY="196.0" mnemonicParsing="false" onAction="#stopSkierButtonPressed" prefHeight="46.0" prefWidth="222.0" text="Stop Skier">
          <font>
             <Font size="20.0" />
          </font>

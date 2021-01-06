@@ -14,7 +14,7 @@ public class Skier implements Serializable, Comparable<Skier> {
 	private int number;
 	private StringProperty time = new SimpleStringProperty(this, "time", "");
 	private String checkpoint;
-	long resultInMilliseconds = 0;
+	private long resultInMilliseconds = 0;
 
 	Timeline timeLine;
 	int milliseconds = 0;
@@ -78,6 +78,10 @@ public class Skier implements Serializable, Comparable<Skier> {
 
 	public long getResultInMilliseconds() {
 		return resultInMilliseconds;
+	}
+	
+	public void setResultInMilliseconds(long result) {
+		this.resultInMilliseconds = result;
 	}
 
 	// end of getters and setters

@@ -8,6 +8,7 @@ Starts each skier after that delay. Doesnt create a delay when it is the last sk
 
 public class PursuitStart extends Thread {
 	public void run() {
+		MainController.pursuitstartRunning = true;
 
 		for (int i = 0; i < MainController.getSkierList().size(); i++) {
 			if (i != MainController.getSkierList().size() - 1) {
@@ -24,6 +25,7 @@ public class PursuitStart extends Thread {
 			}
 
 		}
+		MainController.pursuitstartRunning = false;
 
 	}
 }

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+
+
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -12,6 +14,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,6 +27,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 
 public class MainController implements Initializable {
+	//booleans for checking if the startmethod is finished
+	public static boolean individualstartRunning = false;
+	public static boolean pursuitstartRunning = false;
 
 	// read and populate list from xml file
 
@@ -82,6 +88,8 @@ public class MainController implements Initializable {
 	@SuppressWarnings({ "unchecked", "unchecked", "rawtypes" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+	
 		
 		//initialize tableview and columns
 		skierObservableList = FXCollections.observableArrayList(skierList);
@@ -126,7 +134,7 @@ public class MainController implements Initializable {
 		});
 
 	}
-
+	// method for starting/stopping mass start
 	@FXML
 	void mass_StartTimer(ActionEvent event) {
 		if (mass_StartButton.getText().equals("Mass start")) {
@@ -149,7 +157,7 @@ public class MainController implements Initializable {
 
 		}
 	}
-
+	//method for starting the main stopwatch
 	void newTimeline() {
 		timeLine = new Timeline(new KeyFrame(Duration.millis(1), e -> {
 			milliseconds++;
@@ -185,6 +193,7 @@ public class MainController implements Initializable {
 			skierList.get(i).setTimeProperty("");
 			skierList.get(i).setCheckpoint("");
 		}
+		pursuitStartButton.setDisable(true);
 	}
 
 	public void createSkiers() {
@@ -193,11 +202,11 @@ public class MainController implements Initializable {
 		Skier skier3 = new Skier("Frida", 3, "00:00:00:00", "0");
 		Skier skier4 = new Skier("Mia", 4, "00:00:00:00", "0");
 		Skier skier5 = new Skier("Alex", 5, "00:00:00:00", "0");
-		Skier skier6 = new Skier("Anna", 5, "00:00:00:00", "0");
-		Skier skier7 = new Skier("Lollo", 5, "00:00:00:00", "0");
-		Skier skier8 = new Skier("Fredrik", 5, "00:00:00:00", "0");
-		Skier skier9 = new Skier("Abebe", 5, "00:00:00:00", "0");
-		Skier skier10 = new Skier("Marcus", 5, "00:00:00:00", "0");
+		Skier skier6 = new Skier("Anna", 6, "00:00:00:00", "0");
+		Skier skier7 = new Skier("Lollo", 7, "00:00:00:00", "0");
+		Skier skier8 = new Skier("Fredrik", 8, "00:00:00:00", "0");
+		Skier skier9 = new Skier("Abebe", 9, "00:00:00:00", "0");
+		Skier skier10 = new Skier("Marcus", 10, "00:00:00:00", "0");
 		skierList.add(skier1);
 		skierList.add(skier2);
 		skierList.add(skier3);
@@ -215,7 +224,7 @@ public class MainController implements Initializable {
 	}
 
 	@FXML
-	void stopButton(ActionEvent event) {
+	void stopSkierButtonPressed(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.stopTime();
 	}
@@ -236,6 +245,8 @@ public class MainController implements Initializable {
 			individualStartButton.setText("STOP RACE");
 			
 			IndividualStart individualstart = new IndividualStart();
+			
+			//get selection from choicebox
 			int selectedindex = delayChoiceBox.getSelectionModel().getSelectedIndex();
 			clearHistory(event);
 			if(selectedindex == 1) {
@@ -251,7 +262,31 @@ public class MainController implements Initializable {
 			milliseconds = 0;
 
 			newTimeline();
-
+			
+			
+			//task for checking if the startracemethod is finished
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception{
+					try {
+						while(individualstartRunning) {
+							individualStartButton.setDisable(true);
+							stopSkierButton.setDisable(true);
+						}
+					}catch (Exception e) {
+					e.printStackTrace();
+					}	
+					individualStartButton.setDisable(false);
+					stopSkierButton.setDisable(false);
+					return null;
+					
+				}
+			};
+			Thread taskThread = new Thread(task);
+			taskThread.setDaemon(true);
+			taskThread.start();
+			
+			
 			mass_StartButton.setDisable(true);
 			pursuitStartButton.setDisable(true);
 
@@ -285,6 +320,31 @@ public class MainController implements Initializable {
 
 			PursuitStart jaktstart = new PursuitStart();
 			jaktstart.start();
+			
+			Task<Void> task = new Task<Void>() {
+				@Override
+				protected Void call() throws Exception{
+					try {
+						
+						while(pursuitstartRunning) {
+							pursuitStartButton.setDisable(true);
+							stopSkierButton.setDisable(true);
+						}
+						
+					
+					
+					}catch (Exception e) {
+					e.printStackTrace();
+					}	
+					pursuitStartButton.setDisable(false);
+					stopSkierButton.setDisable(false);
+					return null;
+					
+				}
+			};
+			Thread taskThread = new Thread(task);
+			taskThread.setDaemon(true);
+			taskThread.start();
 
 			mass_StartButton.setDisable(true);
 			individualStartButton.setDisable(true);
@@ -294,6 +354,7 @@ public class MainController implements Initializable {
 			this.timeLine.stop();
 			stopAllSkiers();
 			mass_StartButton.setDisable(false);
+			pursuitStartButton.setDisable(false);
 
 		}
 
