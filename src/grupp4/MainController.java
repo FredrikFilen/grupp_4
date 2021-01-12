@@ -225,8 +225,12 @@ public class MainController implements Initializable {
 
 	@FXML
 	void stopSkierButtonPressed(ActionEvent event) {
+		try {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.stopTime();
+		}catch(Exception e) {
+			System.out.println("No race is running");
+		}
 	}
 
 	public void mass_Start() {
