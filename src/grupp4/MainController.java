@@ -242,6 +242,7 @@ public class MainController implements Initializable {
 		pursuitStartButton.setDisable(true);
 		delayChoiceBox.setDisable(true);
 		clearHistoryButton.setDisable(true);
+		delayChoiceBox.setDisable(true);
 	
 	}
 
@@ -297,6 +298,7 @@ public class MainController implements Initializable {
 			mass_StartButton.setDisable(true);
 			pursuitStartButton.setDisable(true);
 			clearHistoryButton.setDisable(true);
+			delayChoiceBox.setDisable(true);
 
 		} else {
 			individualStartButton.setText("Individual Start");
@@ -305,6 +307,7 @@ public class MainController implements Initializable {
 			mass_StartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
 			clearHistoryButton.setDisable(false);
+			delayChoiceBox.setDisable(false);
 
 		}
 
@@ -358,6 +361,7 @@ public class MainController implements Initializable {
 			mass_StartButton.setDisable(true);
 			individualStartButton.setDisable(true);
 			clearHistoryButton.setDisable(true);
+			delayChoiceBox.setDisable(true);
 			
 
 		} else {
@@ -367,6 +371,7 @@ public class MainController implements Initializable {
 			mass_StartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
 			clearHistoryButton.setDisable(false);
+			delayChoiceBox.setDisable(false);
 
 		}
 

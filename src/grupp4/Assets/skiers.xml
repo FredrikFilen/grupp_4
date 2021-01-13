@@ -7,32 +7,16 @@
      <string></string>
     </void>
     <void property="name">
-     <string>Fredrik</string>
-    </void>
-    <void property="number">
-     <int>8</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>1540</long>
-    </void>
-    <void property="timeProperty">
-     <string>00 : 01 : 540</string>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
      <string>Anders</string>
     </void>
     <void property="number">
      <int>1</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>15805</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 15 : 805</string>
     </void>
    </object>
   </void>
@@ -48,7 +32,10 @@
      <int>3</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6821</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 821</string>
     </void>
    </object>
   </void>
@@ -64,7 +51,10 @@
      <int>6</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6821</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 821</string>
     </void>
    </object>
   </void>
@@ -80,7 +70,10 @@
      <int>2</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6821</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 821</string>
     </void>
    </object>
   </void>
@@ -96,7 +89,10 @@
      <int>4</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6821</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 821</string>
     </void>
    </object>
   </void>
@@ -112,7 +108,10 @@
      <int>5</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6818</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 818</string>
     </void>
    </object>
   </void>
@@ -128,7 +127,10 @@
      <int>7</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6818</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 818</string>
     </void>
    </object>
   </void>
@@ -144,7 +146,10 @@
      <int>9</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6818</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 818</string>
     </void>
    </object>
   </void>
@@ -160,7 +165,29 @@
      <int>10</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>835</long>
+     <long>6818</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 06 : 818</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Fredrik</string>
+    </void>
+    <void property="number">
+     <int>8</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>2880</long>
+    </void>
+    <void property="timeProperty">
+     <string>00 : 02 : 880</string>
     </void>
    </object>
   </void>
