@@ -147,6 +147,7 @@ public class MainController implements Initializable {
 			clearHistory(event);
 			mass_Start();
 			newTimeline();
+			
 
 		} else {
 			mass_StartButton.setText("Mass start");
@@ -154,6 +155,7 @@ public class MainController implements Initializable {
 			stopAllSkiers();
 			pursuitStartButton.setDisable(false);
 			delayChoiceBox.setDisable(false);
+			clearHistoryButton.setDisable(false);
 
 		}
 	}
@@ -239,6 +241,7 @@ public class MainController implements Initializable {
 		individualStartButton.setDisable(true);
 		pursuitStartButton.setDisable(true);
 		delayChoiceBox.setDisable(true);
+		clearHistoryButton.setDisable(true);
 	
 	}
 
@@ -293,6 +296,7 @@ public class MainController implements Initializable {
 			
 			mass_StartButton.setDisable(true);
 			pursuitStartButton.setDisable(true);
+			clearHistoryButton.setDisable(true);
 
 		} else {
 			individualStartButton.setText("Individual Start");
@@ -300,6 +304,7 @@ public class MainController implements Initializable {
 			stopAllSkiers();
 			mass_StartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
+			clearHistoryButton.setDisable(false);
 
 		}
 
@@ -352,6 +357,8 @@ public class MainController implements Initializable {
 
 			mass_StartButton.setDisable(true);
 			individualStartButton.setDisable(true);
+			clearHistoryButton.setDisable(true);
+			
 
 		} else {
 			pursuitStartButton.setText("Pursuit Start");
@@ -359,6 +366,7 @@ public class MainController implements Initializable {
 			stopAllSkiers();
 			mass_StartButton.setDisable(false);
 			pursuitStartButton.setDisable(false);
+			clearHistoryButton.setDisable(false);
 
 		}
 
@@ -368,6 +376,7 @@ public class MainController implements Initializable {
 	void checkpointButtonPressed(ActionEvent event) {
 		selectedSkier = tableview.getSelectionModel().getSelectedItem();
 		selectedSkier.setCheckpoint(selectedSkier.getTimeProperty());
+		tableview.refresh();
 	}
 
 }

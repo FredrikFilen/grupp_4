@@ -1,70 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="14.0.2" class="java.beans.XMLDecoder">
+<java version="15.0.1" class="java.beans.XMLDecoder">
  <object class="java.util.ArrayList">
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Abebe</string>
-    </void>
-    <void property="number">
-     <int>9</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>7356</long>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Lollo</string>
-    </void>
-    <void property="number">
-     <int>7</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>15078</long>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Alex</string>
-    </void>
-    <void property="number">
-     <int>5</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>4105</long>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Mia</string>
-    </void>
-    <void property="number">
-     <int>4</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>15078</long>
-    </void>
-   </object>
-  </void>
   <void method="add">
    <object class="grupp4.Skier">
     <void property="checkpoint">
@@ -77,55 +13,10 @@
      <int>8</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>15077</long>
+     <long>1540</long>
     </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Erik</string>
-    </void>
-    <void property="number">
-     <int>2</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>5905</long>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Anna</string>
-    </void>
-    <void property="number">
-     <int>6</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>13806</long>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="grupp4.Skier">
-    <void property="checkpoint">
-     <string></string>
-    </void>
-    <void property="name">
-     <string>Frida</string>
-    </void>
-    <void property="number">
-     <int>3</int>
-    </void>
-    <void property="resultInMilliseconds">
-     <long>15077</long>
+    <void property="timeProperty">
+     <string>00 : 01 : 540</string>
     </void>
    </object>
   </void>
@@ -141,7 +32,119 @@
      <int>1</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>11440</long>
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Frida</string>
+    </void>
+    <void property="number">
+     <int>3</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Anna</string>
+    </void>
+    <void property="number">
+     <int>6</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Erik</string>
+    </void>
+    <void property="number">
+     <int>2</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Mia</string>
+    </void>
+    <void property="number">
+     <int>4</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Alex</string>
+    </void>
+    <void property="number">
+     <int>5</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Lollo</string>
+    </void>
+    <void property="number">
+     <int>7</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="grupp4.Skier">
+    <void property="checkpoint">
+     <string></string>
+    </void>
+    <void property="name">
+     <string>Abebe</string>
+    </void>
+    <void property="number">
+     <int>9</int>
+    </void>
+    <void property="resultInMilliseconds">
+     <long>835</long>
     </void>
    </object>
   </void>
@@ -157,7 +160,7 @@
      <int>10</int>
     </void>
     <void property="resultInMilliseconds">
-     <long>9523</long>
+     <long>835</long>
     </void>
    </object>
   </void>
